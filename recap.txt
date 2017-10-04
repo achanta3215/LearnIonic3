@@ -1,0 +1,4 @@
+-> Initial setup:
+	- npm install ionic cordova -g
+-> Running the project:
+	- ionic serve
