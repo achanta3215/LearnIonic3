@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
 
 /**
  * Generated class for the QuotesPage page.
@@ -14,12 +14,20 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'quotes.html',
 })
 export class QuotesPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  person: string;
+  text: string;
+  constructor(public navCtrl: NavController, public navParams: NavParams, private viewCtrl: ViewController) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad QuotesPage');
+    this.person = this.navParams.get('person');
+    this.text = this.navParams.get('text');
   }
+
+  onClose() {
+    this.viewCtrl.dismiss();
+  }
+
+  
 
 }
