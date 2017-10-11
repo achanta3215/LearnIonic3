@@ -27,7 +27,7 @@ export class QuotePage implements OnInit{
     }
     ionViewDidLoad() {
     }
-    onAddToFavorite(selectedQuote: Quote){
+    onAddToFavorites(selectedQuote: Quote){
       const alert = this.alertCtrl.create({
         title: 'Add Quote',
         subTitle: 'Are you sure?',
@@ -49,6 +49,14 @@ export class QuotePage implements OnInit{
         ]
       });
       alert.present();
+    }
+
+    onRemoveFromFavorites(quote: Quote){
+        this.quotesService.removeQuoteFromFavorites(quote);
+    }
+
+    isQuoteFavorite(quote: Quote){
+        return this.quotesService.isQuoteFavorite(quote);
     }
 
 }
