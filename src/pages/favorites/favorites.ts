@@ -32,12 +32,18 @@ export class FavoritesPage {
     const modal = this.ModalCtrl.create(QuotesPage, quote);
     modal.present();
     modal.onDidDismiss( (remove: boolean) => {
-      if (remove)
-        this.quotesService.removeQuoteFromFavorites(quote);
-        const position = this.quotes.findIndex( (quoteEl: Quote) => {
-          return quoteEl.id == quote.id;
-        });
-        this.quotes.splice(position, 1);
+      if (remove){
+        this.onRemoveFromFavorites(quote);
+      }
+        
     });
+  }
+
+  onRemoveFromFavorites(quote: Quote){
+    this.quotesService.removeQuoteFromFavorites(quote);
+    const position = this.quotes.findIndex( (quoteEl: Quote) => {
+      return quoteEl.id == quote.id;
+    });
+    this.quotes.splice(position, 1);
   }
 }
