@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angu
 import { Quote } from '../../data/quote.interface';
 import { QuotesService} from '../../services/quotes';
 import { QuotesPage } from '../quotes/quotes';
+import { SettingsService } from '../../services/settings';
 /**
  * Generated class for the FavoritesPage page.
  *
@@ -18,7 +19,7 @@ import { QuotesPage } from '../quotes/quotes';
 export class FavoritesPage {
   quotes: Quote[];
   
-  constructor(public navCtrl: NavController, public navParams: NavParams, private quotesService: QuotesService, private ModalCtrl: ModalController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private quotesService: QuotesService, private ModalCtrl: ModalController, private settingsService: SettingsService) {
   }
 
   ionViewDidLoad() {
@@ -47,5 +48,9 @@ export class FavoritesPage {
     this.quotes.splice(position, 1);
   }
 
+  getBackground(){
+    //return 'altQuoteBackground';
+    return this.settingsService.isAltBackground() ? 'altQuoteBackground' : 'quoteBackground'; 
+  }
   
 }
